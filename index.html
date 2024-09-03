@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P1-M03_5</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-4').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P1-M03_5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision_mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Preparación previa al inicio de la clase</div>
+        <div class="summary">Verificar que las computadoras estén encendidas y que Paint esté accesible en cada una.</div>
+    </div>
+    <div id="revision_mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1 "Materiales y preparación de la Misión".</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">Proyectar la diapositiva 1 "Materiales y preparación de la Misión" y verificar que las computadoras estén encendidas y funcionando, y que Paint esté accesible en cada una.</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">No se requiere diálogo específico, esta es una preparación previa al inicio de la clase.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual_gnius')">
+        <div class="title">
+            <span>📚 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Saludo temático y preparación para la clase</div>
+        <div class="summary">Iniciar la clase con un saludo, evaluar el estado de ánimo, realizar un ritual de agradecimiento y presentar los objetivos de la misión.</div>
+    </div>
+    <div id="saludo_ritual_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 2 "Gnius Club" e iniciar la clase con un saludo temático relacionado con Paint.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Hola, artistas en formación! Hoy vamos a explorar más a fondo nuestras habilidades en Paint. ¿Están listos para crear algo increíble?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo" y pedir a los estudiantes que expresen su estado de ánimo mediante un gesto físico.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Si están emocionados, levanten ambos pulgares. Si están un poco nerviosos, hagan una señal con el pulgar hacia abajo. ¡Veamos cómo se sienten hoy!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 4 "Ritual de Agradecimiento" y guiar a los estudiantes en un breve ejercicio de agradecimiento.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, tómense un momento para pensar en algo que les haya traído alegría hoy. ¡Gracias por compartir y por estar aquí!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión" y mostrar a los estudiantes los tres objetivos principales que se alcanzarán durante la clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a trabajar en tres objetivos clave: 1. Explorar nuevas herramientas en Paint para crear efectos únicos. 2. Diseñar una imagen detallada utilizando formas y colores. 3. Guardar y compartir su obra maestra con el grupo. ¡Es hora de crear!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: State Change -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🔄 Actividad 2: State Change</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Preparación creativa para el uso de Paint</div>
+        <div class="summary">Activar la creatividad de los estudiantes con una actividad rápida de boceto en el aire antes de pasar al uso de Paint.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 6 "Preparación Creativa" y realizar una actividad rápida de boceto en el aire.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Artistas, vamos a activar nuestra creatividad! Imaginemos que nuestras manos son pinceles. En el aire, tracen con sus dedos un gran círculo... Ahora un cuadrado... Y por último, unas líneas que podrían ser parte de su próximo dibujo en Paint. ¡Vamos a practicar nuestras formas básicas!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 7 y guiar a los estudiantes en una transición hacia el uso de Paint.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora que hemos practicado en el aire, estamos listos para llevar esas formas a la pantalla. Piensen en las figuras que acaban de dibujar y cómo las van a usar en su obra de arte en Paint."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Challenge -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 3: Challenge</span>
+            <span>⏰ Tiempo: 33.5 minutos</span>
+        </div>
+        <div class="subtitle">Dibujo en Paint</div>
+        <div class="summary">Dibujar un animal en Paint utilizando las herramientas aprendidas y guardar correctamente el trabajo.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (3 minutos): Proyectar la diapositiva 8 'Challenge del Día' y explicar claramente el objetivo del proyecto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy, Genios, nuestro desafío es crear una obra maestra en Paint. Van a dibujar el animal que más les llame la atención, usando todas las herramientas y trucos que hemos aprendido. ¡Dejen volar su creatividad!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (25 minutos): Proyectar un temporizador de 25 minutos y supervisar mientras los estudiantes trabajan en sus creaciones.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Recuerden, pueden utilizar formas, colores, y herramientas especiales para darle vida a su animal. Si necesitan ayuda o ideas, estoy aquí para apoyarlos. ¡Vamos a crear algo asombroso!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Proyectar la diapositiva 9 'Guardar tu Trabajo' y asegurarse de que todos los estudiantes guarden su trabajo correctamente en la carpeta asignada.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Una vez que terminen su dibujo, asegúrense de guardarlo correctamente. Hagan clic en 'Archivo', luego en 'Guardar como', y elijan la carpeta escritorio. Denle un nombre a su archivo y asegúrense de que esté en formato JPEG. ¡Así su trabajo estará listo para compartir!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 10 'Revisión de Objetivos' y guiar a los estudiantes para que revisen si han logrado dibujar el animal y guardarlo correctamente.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de pasar a la siguiente actividad, vamos a revisar nuestros objetivos. ¿Lograron dibujar el animal que les pareció más interesante y guardarlo correctamente? ¡Si es así, misión cumplida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: Team Gnius -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 4: Team Gnius</span>
+            <span>⏰ Tiempo: 5.5 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en equipo para compartir ideas y aprender juntos</div>
+        <div class="summary">Organizar a los estudiantes en equipos, asignar roles y facilitar la discusión y el intercambio de ideas.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 11 'Team Gnius' y organizar a los estudiantes en equipos, asignando roles.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Es hora de trabajar en equipo, Genios. Vamos a formar equipos y asignar roles para que cada uno tenga una responsabilidad específica. Esto les ayudará a compartir sus ideas y aprender mejor unos de otros."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (3 minutos): Supervisar las discusiones en los equipos, asegurando que todos tengan la oportunidad de compartir y recibir retroalimentación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Escuchen atentamente a sus compañeros y comenten sobre sus dibujos. ¿Qué les gustó? ¿Qué les sorprendió? ¿Qué aprendieron de sus compañeros?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 12 'Compartiendo Ideas' y pedir a cada equipo que elija un representante para compartir una idea clave.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, cada equipo elija a una persona para compartir con el grupo algo interesante que hayan discutido o aprendido durante la actividad. ¡Es momento de inspirarnos unos a otros!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 13 'Revisión de Objetivos' y guiar a los estudiantes para que revisen si han logrado compartir sus dibujos y participar activamente en la discusión.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de cerrar, revisemos nuestros objetivos de equipo. ¿Lograron compartir sus dibujos y participar activamente en la discusión? ¡Si es así, misión cumplida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Honor de Dojo -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 5: Honor de Dojo</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y reconocimiento</div>
+        <div class="summary">Reflexionar sobre la clase, agradecer el esfuerzo, y dejar el espacio en orden.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar la diapositiva 14 'Reflexión y Feedback' e invitar a los estudiantes a compartir lo que más les gustó o lo que aprendieron durante la clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de concluir nuestra misión de hoy, reflexionemos sobre lo que hemos hecho. ¿Qué fue lo que más disfrutaron? ¿Qué aprendieron de esta actividad? ¡Compartan algo positivo con sus compañeros!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Expresar un agradecimiento general a todos los estudiantes, resaltando el esfuerzo colectivo y el trabajo en equipo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, hoy realizaron un trabajo espectacular. ¡Gracias por su dedicación y esfuerzo! Juntos logramos una misión exitosa. ¡Felicitaciones a todos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar la diapositiva 15 'Honrar el Dojo' y pedir a los estudiantes que aseguren que el aula o el espacio donde trabajaron esté en orden, asignando tareas específicas.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, es momento de honrar nuestro Dojo. Vamos a asegurarnos de que el espacio quede limpio y ordenado para la siguiente misión. Cada equipo se encargará de su área. ¡Gracias por mantener todo en su lugar!"</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+<!-- Scripts adicionales si es necesario -->
+<script>
+    // Agregar scripts adicionales aquí si es necesario
+</script>
+
+</body>
+</html>
